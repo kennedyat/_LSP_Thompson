@@ -139,7 +139,6 @@ public void union(IntegerSet intSetb) {
  * @param intSetb
  */
 public void intersect(IntegerSet intSetb) {
-	List<Integer> list = new ArrayList<Integer>();
 	 for (Integer i : intSetb.intSet) {
 	        if(intSet.contains(i)) {
 	            System.out.print(i+ " ");
