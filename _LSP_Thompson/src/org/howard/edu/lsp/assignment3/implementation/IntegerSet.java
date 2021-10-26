@@ -1,4 +1,5 @@
 package org.howard.edu.lsp.assignment3.implementation;
+import org.howard.edu.lsp.assignment3.exception.IntegerSetException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +15,16 @@ import java.util.List;
  * throws exception when list is null
  *
  */
-class IntegerSetException extends Exception{
+/*class IntegerSetException extends Exception{
 	public IntegerSetException(String s)
     {
         super(s);
     }
 	
-}
+}*/
 
 public class IntegerSet  {
+	public IntegerSetException e;
 	// Hint: probably best to use an array list.  You will need to do a little research
 	public List<Integer> intSet = new ArrayList<Integer>();
 
@@ -50,7 +52,7 @@ public int length() {return intSet.size();}; // returns the length
  * @param IntegerSet takes in a set
  * @return returns true/false based on if intSet contains the same values as given intSet
  */
-public boolean equals(IntegerSet b) {return intSet.equals(b);}; 
+public boolean equals(IntegerSet b) {return intSet.equals(b.intSet);}; 
 
 /**
  * 
@@ -125,13 +127,19 @@ public void remove(int item) throws IntegerSetException { //Throws a IntegerSetE
  * Combines both values from set1 and set2 into a single array
  * @param intSetb
  */
-public void union(IntegerSet intSetb) {
-
+public List<Integer> union(IntegerSet intSetb) {
+	 for (Integer i : intSetb.intSet) {
+	        if(!intSet.contains(i)) 
+	        	intSet.add(i);
+	         }
+	 return intSet;
+	 /*
 	List<Integer> list = new ArrayList<Integer>();
 	list.addAll(intSet);
 	list.addAll(intSetb.intSet);
      
-	System.out.println(list);
+	//System.out.println(list);
+	return list;*/
 };
 
 /**
@@ -139,28 +147,42 @@ public void union(IntegerSet intSetb) {
  * @param intSetb
  */
 public void intersect(IntegerSet intSetb) {
+	List<Integer> list = new ArrayList<Integer>();//
 	 for (Integer i : intSetb.intSet) {
 	        if(intSet.contains(i)) {
+	        	list.add(i);
 	            System.out.print(i+ " ");
-	        }
-}}; 
+	        }}
+	 intSet.clear();
+	for(Integer e : list) {
+	    intSet.add(e);
+	    
+	}  
+}; 
 
 /**
  * Gives the difference between set1 and set2
  * @param intSetb
  */
 public void diff(IntegerSet intSetb) {
+	//List<Integer> list = new ArrayList<Integer>();//
 	 for (Integer i : intSetb.intSet) {
 	        if(!intSet.contains(i)) {
-	        	System.out.print(i+ " ");
+	        	intSet.add(i);
+	        	//System.out.print(i+ " ");
 	        }
+	        else
+	        	intSet.remove(i);
+	       // intSet=list;
+	        
+	        
 }};
 
 /**
  * 
  * @return if intSet array is empty
  */
-boolean isEmpty() {
+public boolean isEmpty() {
 	if(intSet.size()==0)
 		return true;
 	return false;
