@@ -70,12 +70,12 @@ public boolean contains(int value) {
  * @throws IntegerSetException when array is null
  */
 public int largest() throws IntegerSetException {
-	try {
+	//try {
 	if(intSet.size()==0) {
-		throw new IntegerSetException("Array is Empty.");}}
-	catch(IntegerSetException intex){
-		 System.out.println(intex.getMessage());
-	}
+		throw new IntegerSetException("Array is Empty.");}
+	//catch(IntegerSetException intex){
+		 //System.out.println(intex.getMessage());
+	//}
 	int max = intSet.get(0);
 	for(int i: intSet) {
 		if(i>max) {

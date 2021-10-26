@@ -60,6 +60,8 @@ public class Driver {
 		set2.clear();
 		System.out.println("Set 2 had been cleared out");
 		System.out.println("Value of Set2 is:" + set2.toString());
+		
+		System.out.println("Largest value in Set2 is:" + set2.largest());
 
 
 	}

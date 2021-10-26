@@ -15,7 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import org.junit.rules.ExpectedException;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 
 
@@ -50,12 +50,7 @@ class IntegerSetTest {
 			 assertEquals(expected.intSet, set1.intSet);
 	       
 	    }
-		//clear;
-		//length
-		/*public static ArrayList<Integer>> data(){
-			return new ArrayList<ArrayList<Integer>> (Arrays.asList({1,2,3},{1,2,3,4},{2,3,4,5,6,7});
-		}
-		*/
+
 		
 		@Test
 	    @DisplayName("Test case for length")
@@ -68,7 +63,6 @@ class IntegerSetTest {
 			assertEquals(4,set1.length());
 		}
 		
-		//equals - do failing test cases too
 		@Test
 	    @DisplayName("Test case for equals")
 		public void testEquals() {
@@ -76,7 +70,6 @@ class IntegerSetTest {
 			assertTrue(set1.equals(expected));
 			assertFalse(set1.equals(set2));
 		}
-		//contains - f
 		
 		public void testContains() {
 			 
@@ -85,29 +78,23 @@ class IntegerSetTest {
 				assertTrue(set1.contains(4));
 				assertFalse(set1.contains(1));
 		}
-		//largest +smallest
-		@Rule
-		public ExpectedException thrown = ExpectedException.none();
-		
+	
 		@Test
-        public void testLargestandSmallest() throws IntegerSetException{ //Couldn't figure how to throw exception
+		@DisplayName("Test case for finding smallest and largest") 
+        public void testSmallLarge() throws Exception{ 
 			 assertEquals(4,set1.largest());
 			  assertEquals(2,set1.smallest());
-			//Throwable e = assertThrows(IntegerSetException.class, ()->set1.largest());
-			//set1.clear();
-			//set1.largest();
-			//Exception e = assertThrows(IntegerSetException.class, ()->set1.largest());
-			//Exception t = assertThrows(IntegerSetException.class, () -> set1.largest());
-			 // assertTrue(t.getMessage().contains("Array is Empty."));
-			 
-			//thrown.expect(IntegerSetException.class);
-			//thrown.expectMessage("Array is Empty.");
 			
-			
+			set1.clear();
+		
+			 Exception l = assertThrows(IntegerSetException.class, () -> set1.largest());
+			 assertEquals("Array is Empty." ,l.getMessage());
+			 Exception s = assertThrows(IntegerSetException.class, () -> set1.smallest());
+			 assertEquals("Array is Empty." ,s.getMessage());	
 		}
-	//add + remove
+
 	@Test
-	@DisplayName("Test case for adding and removing") //Cant figure out exception
+	@DisplayName("Test case for adding and removing") 
 	public void testAddRemove() throws Exception {
 		 expected.intSet = new ArrayList<Integer>(Arrays.asList(2,3,4,6));
 		set1.add(6);
@@ -121,13 +108,12 @@ class IntegerSetTest {
 		expected.intSet = new ArrayList<Integer>(Arrays.asList(2,4,6,7,9));
 		set1.remove(3);
 		assertEquals(expected.intSet, set1.intSet);
+		set1.clear();
+		 Exception t = assertThrows(IntegerSetException.class, () -> set1.remove(1));
+		 assertEquals("Array is Empty." ,t.getMessage());
 	}
 	
 	
-
-		//@Test
-	   // @DisplayName("Test case for equals")
-		//@TestFactory
 	    @Test
 	    @DisplayName("Test case for differences")
 		void testDiff() {
@@ -161,6 +147,12 @@ class IntegerSetTest {
 			assertFalse(set1.isEmpty());
 			set1.clear();
 			assertTrue(set1.isEmpty());
+		}
+		
+		@Test
+	    @DisplayName("Test case if string")
+	    void testtoString() {
+		assertEquals("[2,3,4]", set1.toString()); //Couldn't figure out String
 		}
 		
 		
