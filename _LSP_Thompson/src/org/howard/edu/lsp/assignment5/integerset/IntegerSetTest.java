@@ -107,6 +107,7 @@ class IntegerSetTest {
 		}
 	//add + remove
 	@Test
+	@DisplayName("Test case for adding and removing") //Cant figure out exception
 	public void testAddRemove() throws Exception {
 		 expected.intSet = new ArrayList<Integer>(Arrays.asList(2,3,4,6));
 		set1.add(6);
