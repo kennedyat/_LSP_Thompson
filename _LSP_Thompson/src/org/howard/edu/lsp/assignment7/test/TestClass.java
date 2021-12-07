@@ -69,7 +69,7 @@ public class TestClass {
 			//expected.polySet = new ArrayList<Term>(Arrays.asList(Term(-4,0));
 			 //expected.polySet = new ArrayList<Term>(Arrays.asList(Term(-4,0));
 			 //set.insert(4,2);
-			 assertEquals("", set.insert(4,2));
+			 assertEquals("5x^3+4x^2+-4x+8", set.insert(4,2));
 	       
 	    }
 		
@@ -79,7 +79,7 @@ public class TestClass {
 	    public void delete() {
 			 //expected.polySet = new ArrayList<Integer>(Arrays.asList(-4,0,-2,2,6,5));
 			 
-			 assertEquals("", set.delete(7,1));
+			 assertEquals("5x^3+-4x+8", set.delete(4,1));
 	       
 	    }
 		
@@ -88,7 +88,7 @@ public class TestClass {
 	    public void reverse() {
 			 //expected.polySet = new ArrayList<Integer>(Arrays.asList(6,5,-2,2,7,1,-4,0));
 			 
-			 assertEquals("",set.reverse());
+			 assertEquals("8+-4x+5x^3",set.reverse());
 	       
 	    }
 		
@@ -98,7 +98,7 @@ public class TestClass {
 	    public void product() {
 			 //expected.polySet = new ArrayList<Integer>(Arrays.asList(6,5,-2,2,7,1,-4,0));
 			 
-			 assertEquals("",set.product());
+			 assertEquals("-160x^4",set.product());
 	       
 	    }
 
